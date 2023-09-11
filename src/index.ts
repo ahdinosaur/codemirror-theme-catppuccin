@@ -33,11 +33,14 @@ export function catppuccinTheme(variant: Variant) {
   const fg = palette.text.hex
   const caret = palette.rosewater.hex
   const selectionBg = palette.surface2.hex
-  const selectionMatchBg = new TinyColor(palette.text.hex).setAlpha(0.07).toHex()
+  const selectionMatchBg = new TinyColor(palette.text.hex).setAlpha(0.2).toHex8String()
   const searchMatchBg = palette.red.hex
-  const searchMatchSelectedBg = new TinyColor(palette.sky.hex).darken(30).toHex()
+  const searchMatchSelectedBg = new TinyColor(palette.sky.hex)
+    .darken(30)
+    .setAlpha(0.2)
+    .toHex8String()
   const searchMatchOutline = 'none' // ?
-  const lineHighlight = palette.surface0.hex
+  const activeLine = new TinyColor(palette.surface0.hex).setAlpha(0.2).toHex8String()
   const gutterBg = palette.crust.hex // ?
   const gutterFg = palette.text.hex // ?
   const gutterActiveFg = palette.surface1.hex // ?
@@ -46,9 +49,10 @@ export function catppuccinTheme(variant: Variant) {
   const panelsBg = palette.surface1.hex // ?
   const panelsFg = palette.mantle.hex // ?
   const foldPlaceholderFg = palette.blue.hex // ?
-  const tooltipBg = new TinyColor(palette.mantle.hex).setAlpha(0.75).toHex()
+  const tooltipBg = new TinyColor(palette.mantle.hex).setAlpha(0.75).toHex8String()
   const tooltipAutocompleteSelectedFg = palette.mantle.hex
   const tooltipAutocompleteSelectedBg = palette.surface1.hex
+  const focusedBg = new TinyColor(palette.sapphire.hex).setAlpha(0.5).toHex8String()
 
   return EditorView.theme(
     {
@@ -78,10 +82,10 @@ export function catppuccinTheme(variant: Variant) {
         backgroundColor: searchMatchSelectedBg,
       },
 
-      '.cm-activeLine': { backgroundColor: lineHighlight },
+      '.cm-activeLine': { backgroundColor: activeLine },
 
       '&.cm-focused .cm-matchingBracket, &.cm-focused .cm-nonmatchingBracket': {
-        backgroundColor: '#bad0f847',
+        backgroundColor: focusedBg,
       },
 
       '.cm-gutters': {
