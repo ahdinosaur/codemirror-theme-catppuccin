@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "description": " 🪞 Soothing pastel theme for CodeMirror",
   "type": "module",
-  "main": "dist/index.cjs",
   "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
+    "types": "./dist/index.d.ts",
+    "default": "./dist/index.js"
   },
   "scripts": {
-    "test": "cm-runtests",
-    "prepare": "cm-buildhelper src/catppuccin"
+    "clean": "rm -r ./dist",
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,8 @@
     "@lezer/highlight": "^1.1.6"
   },
   "devDependencies": {
-    "@codemirror/buildhelper": "^1.0.0"
+    "@codemirror/buildhelper": "^1.0.0",
+    "@sindresorhus/tsconfig": "^4.0.0",
+    "typescript": "^5.2.2"
   }
 }
