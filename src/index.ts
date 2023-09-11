@@ -15,7 +15,7 @@ import { TinyColor } from '@ctrl/tinycolor'
 // - vscode: https://github.com/catppuccin/vscode/
 //   - https://github.com/catppuccin/vscode/blob/main/src/theme/uiColors.ts
 
-type Variant = keyof typeof variants
+export type Variant = keyof typeof variants
 type Palette = (typeof variants)[Variant]
 
 /// The editor theme styles for Catppuccin.
