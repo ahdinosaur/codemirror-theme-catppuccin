@@ -18,6 +18,13 @@ import { TinyColor } from '@ctrl/tinycolor'
 export type Variant = keyof typeof variants
 type Palette = (typeof variants)[Variant]
 
+const isDark: Record<Variant, boolean> = {
+  latte: false,
+  frappe: true,
+  macchiato: true,
+  mocha: true,
+}
+
 /// The editor theme styles for Catppuccin.
 export function catppuccinTheme(variant: Variant) {
   const palette: Palette = variants[variant]
@@ -43,75 +50,80 @@ export function catppuccinTheme(variant: Variant) {
   const tooltipAutocompleteSelectedFg = palette.mantle.hex
   const tooltipAutocompleteSelectedBg = palette.surface1.hex
 
-  return EditorView.theme({
-    '&': {
-      color: fg,
-      backgroundColor: bg,
-    },
+  return EditorView.theme(
+    {
+      '&': {
+        color: fg,
+        backgroundColor: bg,
+      },
 
-    '.cm-content': {
-      caretColor: caret,
-    },
+      '.cm-content': {
+        caretColor: caret,
+      },
 
-    '.cm-cursor, .cm-dropCursor': { borderLeftColor: caret },
-    '&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection':
-      { backgroundColor: selectionBg },
-    '.cm-selectionMatch': { backgroundColor: selectionMatchBg },
+      '.cm-cursor, .cm-dropCursor': { borderLeftColor: caret },
+      '&.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection':
+        { backgroundColor: selectionBg },
+      '.cm-selectionMatch': { backgroundColor: selectionMatchBg },
 
-    '.cm-panels': { backgroundColor: panelsBg, color: panelsFg },
-    '.cm-panels.cm-panels-top': { borderBottom: '2px solid black' },
-    '.cm-panels.cm-panels-bottom': { borderTop: '2px solid black' },
+      '.cm-panels': { backgroundColor: panelsBg, color: panelsFg },
+      '.cm-panels.cm-panels-top': { borderBottom: '2px solid black' },
+      '.cm-panels.cm-panels-bottom': { borderTop: '2px solid black' },
 
-    '.cm-searchMatch': {
-      backgroundColor: searchMatchBg,
-      outline: searchMatchOutline, // ?
-    },
-    '.cm-searchMatch.cm-searchMatch-selected': {
-      backgroundColor: searchMatchSelectedBg,
-    },
+      '.cm-searchMatch': {
+        backgroundColor: searchMatchBg,
+        outline: searchMatchOutline, // ?
+      },
+      '.cm-searchMatch.cm-searchMatch-selected': {
+        backgroundColor: searchMatchSelectedBg,
+      },
 
-    '.cm-activeLine': { backgroundColor: lineHighlight },
+      '.cm-activeLine': { backgroundColor: lineHighlight },
 
-    '&.cm-focused .cm-matchingBracket, &.cm-focused .cm-nonmatchingBracket': {
-      backgroundColor: '#bad0f847',
-    },
+      '&.cm-focused .cm-matchingBracket, &.cm-focused .cm-nonmatchingBracket': {
+        backgroundColor: '#bad0f847',
+      },
 
-    '.cm-gutters': {
-      color: gutterFg,
-      backgroundColor: gutterBg,
-      border: gutterBorder,
-    },
+      '.cm-gutters': {
+        color: gutterFg,
+        backgroundColor: gutterBg,
+        border: gutterBorder,
+      },
 
-    '.cm-activeLineGutter': {
-      color: gutterActiveFg,
-      backgroundColor: gutterActiveBg,
-    },
+      '.cm-activeLineGutter': {
+        color: gutterActiveFg,
+        backgroundColor: gutterActiveBg,
+      },
 
-    '.cm-foldPlaceholder': {
-      backgroundColor: 'transparent',
-      border: 'none',
-      color: foldPlaceholderFg,
-    },
+      '.cm-foldPlaceholder': {
+        backgroundColor: 'transparent',
+        border: 'none',
+        color: foldPlaceholderFg,
+      },
 
-    '.cm-tooltip': {
-      border: 'none',
-      backgroundColor: tooltipBg,
-    },
-    '.cm-tooltip .cm-tooltip-arrow:before': {
-      borderTopColor: 'transparent',
-      borderBottomColor: 'transparent',
-    },
-    '.cm-tooltip .cm-tooltip-arrow:after': {
-      borderTopColor: tooltipBg,
-      borderBottomColor: tooltipBg,
-    },
-    '.cm-tooltip-autocomplete': {
-      '& > ul > li[aria-selected]': {
-        backgroundColor: tooltipAutocompleteSelectedBg,
-        color: tooltipAutocompleteSelectedFg,
+      '.cm-tooltip': {
+        border: 'none',
+        backgroundColor: tooltipBg,
+      },
+      '.cm-tooltip .cm-tooltip-arrow:before': {
+        borderTopColor: 'transparent',
+        borderBottomColor: 'transparent',
+      },
+      '.cm-tooltip .cm-tooltip-arrow:after': {
+        borderTopColor: tooltipBg,
+        borderBottomColor: tooltipBg,
+      },
+      '.cm-tooltip-autocomplete': {
+        '& > ul > li[aria-selected]': {
+          backgroundColor: tooltipAutocompleteSelectedBg,
+          color: tooltipAutocompleteSelectedFg,
+        },
       },
     },
-  })
+    {
+      dark: isDark[variant],
+    },
+  )
 }
 
 /// The highlighting style for code in the Catppuccin theme.
