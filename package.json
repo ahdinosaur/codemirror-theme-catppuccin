@@ -1,0 +1,43 @@
+{
+  "name": "catppuccin-codemirror",
+  "version": "0.1.0",
+  "description": " 🪞 Soothing pastel theme for CodeMirror",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "scripts": {
+    "test": "cm-runtests",
+    "prepare": "cm-buildhelper src/catppuccin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahdinosaur/catppuccin-codemirror.git"
+  },
+  "keywords": [
+    "codemirror",
+    "theme",
+    "codemirror-themes",
+    "catppuccin",
+    "catppuccin-theme"
+  ],
+  "author": "Michael Williams",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ahdinosaur/catppuccin-codemirror/issues"
+  },
+  "homepage": "https://github.com/ahdinosaur/catppuccin-codemirror#readme",
+  "dependencies": {
+    "@catppuccin/palette": "^0.2.0",
+    "@codemirror/language": "^6.9.0",
+    "@codemirror/state": "^6.2.1",
+    "@codemirror/view": "^6.18.0",
+    "@ctrl/tinycolor": "^4.0.2",
+    "@lezer/highlight": "^1.1.6"
+  },
+  "devDependencies": {
+    "@codemirror/buildhelper": "^1.0.0"
+  }
+}
