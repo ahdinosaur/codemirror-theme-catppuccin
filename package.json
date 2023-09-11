@@ -1,6 +1,6 @@
 {
   "name": "codemirror-theme-catppuccin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": " 🪞 Soothing pastel theme for CodeMirror",
   "type": "module",
   "exports": {
