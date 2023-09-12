@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "rm -r ./dist",
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
