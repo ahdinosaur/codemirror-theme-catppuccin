@@ -230,6 +230,7 @@ export function catppuccinHighlightStyle(variant: Variant) {
     { tag: t.constant(t.name), color: palette.peach.hex },
     { tag: t.function(t.variableName), color: palette.sapphire.hex },
     { tag: t.function(t.propertyName), color: palette.sapphire.hex },
+    { tag: t.function(t.punctuation), color: palette.sapphire.hex },
     { tag: t.standard(t.name), color: palette.mauve.hex },
     { tag: t.local(t.name), color: palette.maroon.hex },
     { tag: t.local(t.variableName), color: palette.maroon.hex },
